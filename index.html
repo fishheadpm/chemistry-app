@@ -4,35 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>化学式アプリ</title>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 40px;
-      background-color: #f5f5f5;
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    .box {
-      background: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <h1>化学式アプリ</h1>
+  <div class="container">
+    <header class="card">
+      <h1>化学式アプリ</h1>
+      <p class="sub">スマートフォン向け学習アプリ</p>
+    </header>
 
-  <div class="box">
-    <p>GitHub Pages の表示確認です 👍</p>
-    <p>ここが表示されれば成功です！</p>
+    <main>
+      <section id="menuScreen" class="card">
+        <h2>出題モードを選ぶ</h2>
+
+        <div class="button-group">
+          <button id="modeNameToFormula">名前 → 化学式</button>
+          <button id="modeFormulaToName">化学式 → 名前</button>
+          <button id="modeMistakeNameToFormula">間違えた問題だけ(名前 → 化学式)</button>
+          <button id="modeMistakeFormulaToName">間違えた問題だけ(化学式 → 名前)</button>
+          <button id="resetMistakes" class="danger">間違えた履歴をリセットする</button>
+        </div>
+
+        <div class="stats">
+          <p>間違えたことがある問題数: <span id="mistakeQuestionCount">0</span></p>
+          <p>総間違い回数: <span id="totalMistakeCount">0</span></p>
+        </div>
+      </section>
+
+      <section id="quizScreen" class="card hidden">
+        <div class="quiz-meta">
+          <p id="modeLabel" class="mode-label"></p>
+          <p id="mistakeCountLabel">この問題の間違い回数: 0</p>
+        </div>
+
+        <div class="question-block">
+          <h2 id="questionTitle">問題</h2>
+          <p id="questionText" class="question-text"></p>
+        </div>
+
+        <div class="answer-block">
+          <label for="answerInput">答えを入力</label>
+          <input type="text" id="answerInput" autocomplete="off" />
+        </div>
+
+        <div class="button-group">
+          <button id="judgeButton">判定</button>
+          <button id="nextButton" disabled>次へ</button>
+          <button id="backToMenuButton" class="secondary">メニューへ戻る</button>
+        </div>
+
+        <div id="resultArea" class="result-area">
+          <p id="resultMessage"></p>
+          <p id="correctAnswerMessage"></p>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
